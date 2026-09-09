@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,37 +29,6 @@
             max-width: 850px;
             margin: 0 auto;
             padding: 40px 20px;
-            position: relative;
-        }
-
-        /* Переключатель языков */
-        .lang-switcher {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            display: flex;
-            gap: 5px;
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 4px;
-        }
-
-        .lang-btn {
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            padding: 6px 14px;
-            font-size: 0.85rem;
-            font-weight: bold;
-            cursor: pointer;
-            border-radius: 16px;
-            transition: all 0.2s;
-        }
-
-        .lang-btn.active {
-            background-color: var(--accent-color);
-            color: #000;
         }
 
         header {
@@ -67,7 +36,6 @@
             margin-bottom: 40px;
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 25px;
-            margin-top: 20px;
         }
 
         .logo {
@@ -129,6 +97,7 @@
             margin: 0 auto;
         }
 
+        /* Предупреждение об особенностях нод */
         .alert-box {
             background-color: rgba(255, 59, 48, 0.08);
             border: 1px solid var(--warning-color);
@@ -253,44 +222,77 @@
 <body>
 
 <div class="container">
-    <!-- Переключатель -->
-    <div class="lang-switcher">
-        <button class="lang-btn active" onclick="setLang('en')">EN</button>
-        <button class="lang-btn" onclick="setLang('ru')">RU</button>
-    </div>
-
     <header>
         <div class="logo">₿</div>
-        <h1 data-en="Private Bitcoin Transaction (2012 Legacy)" data-ru="Включение приватной транзакции (2012 Legacy)">Private Bitcoin Transaction (2012 Legacy)</h1>
-        <p class="subtitle" data-en="Direct proposal to pools: a block with guaranteed ultra-high incentive" data-ru="Прямое предложение пулам: блок с гарантированной сверхвысокой прибылью">Direct proposal to pools: a block with guaranteed ultra-high incentive</p>
+        <h1>Включение приватной транзакции (2012 Legacy)</h1>
+        <p class="subtitle">Прямое предложение пулам: блок с гарантированной сверхвысокой прибылью</p>
     </header>
 
-    <!-- БЛОК: ГЛАВНЫЙ ПРИЗ -->
+    <!-- БЛОК: ГЛАВНЫЙ ПРИЗ (КОМИССИЯ) -->
     <div class="card prize-card">
-        <div class="prize-title" data-en="🏆 Grand Prize for Mining Pool" data-ru="🏆 Главный приз для майнинг-пула">🏆 Grand Prize for Mining Pool</div>
+        <div class="prize-title">🏆 Главный приз для майнинг-пула</div>
         <div class="prize-amount">1.22523851 BTC</div> 
-        <p class="prize-desc" data-en="Pure profit for the miner due to the exceptional fee embedded directly in the transaction. The pool will collect the full amount automatically upon including the transaction into their block." data-ru="Чистый выигрыш майнера за счет исключительной комиссии, заложенной прямо в транзакцию. Пул заберет всю сумму автоматически при включении транзакции в свой блок.">
-            Pure profit for the miner due to the exceptional fee embedded directly in the transaction. The pool will collect the full amount automatically upon including the transaction into their block.
+        <p class="prize-desc">
+            Чистый выигрыш майнера за счет исключительной комиссии, заложенной прямо в транзакцию. Пул заберет всю сумму автоматически при включении транзакции в свой блок.
         </p>
     </div>
-	
-	<!-- ДАННЫЕ ТРАНЗАКЦИИ -->
-<div class="card">
-    <label for="rawHex" data-en="Raw Transaction Data for Miner (Hex):" data-ru="Сырые данные для майнера (Raw TX Hex):">Raw Transaction Data for Miner (Hex):</label>
-    <!-- Вот само текстовое окно, куда нужно вставить ваш HEX вместо шаблона -->
-    <textarea id="rawHex" readonly placeholder="Insert your signed raw transaction hex here...">01000000012c1b5a...</textarea>
-    
-    <button class="btn-copy" onclick="copyHex()" data-en="Copy Raw HEX" data-ru="Скопировать Raw HEX">Copy Raw HEX</button>
-</div>
-
 
     <!-- ТЕХНИЧЕСКОЕ ПРЕДУПРЕЖДЕНИЕ -->
     <div class="alert-box">
         <div class="alert-icon">⚠️</div>
         <div class="alert-text">
-            <h4 data-en="Transaction Specifications (2012 Legacy Format)" data-ru="Специфика транзакции (Формат 2012 года)">Transaction Specifications (2012 Legacy Format)</h4>
-            <p data-en="This transaction is constructed according to the rules and structures of 2012. Due to the strict policy rules of modern Bitcoin nodes, it is rejected by the standard mempool during regular P2P broadcasting. However, it features 100% network consensus validity." data-ru="Данная транзакция сформирована по правилам и структуре 2012 года. Из-за строгих политик (policy rules) современных Bitcoin-нод, она отклоняется стандартным мемпулом при попытке обычной P2P-трансляции. Однако она имеет 100% валидность по консенсусу сети.">
-                This transaction is constructed according to the rules and structures of 2012. Due to the strict policy rules of modern Bitcoin nodes, it is rejected by the standard mempool during regular P2P broadcasting. However, it features 100% network consensus validity.
+            <h4>Специфика транзакции (Формат 2012 года)</h4>
+            <p>
+                Данная транзакция сформирована по правилам и структуре <strong>2012 года</strong>. Из-за строгих политик (policy rules) современных Bitcoin-нод, она <strong>отклоняется стандартным мемпулом</strong> при попытке обычной P2P-трансляции. Однако она имеет <strong>100% валидность по консенсусу сети</strong>.
             </p>
-            <p style="border-top: 1px solid rgba(255,59,48,0.2); padding-top: 10px; margin-top: 10px;" data-en="🛑 Attention Pool Developers: For your node to accept this transaction locally for block assembly, it requires either mandatory editing of the Bitcoin Core source code (line 31.1), or running our pre-built modified client from the repository:" data-ru="🛑 Внимание разработчикам пула: Чтобы ваша нода приняла эту транзакцию локально для сборки блока, требуется обязательное редактирование исходного кода Bitcoin Core (строка 31.1), либо запуск готового модифицированного клиента с нашего репозитория:">
+            <p style="border-top: 1px solid rgba(255,59,48,0.2); padding-top: 10px; margin-top: 10px;">
+                <strong>🛑 Внимание разработчикам пула:</strong> Чтобы ваша нода приняла эту транзакцию локально для сборки блока, требуется обязательное **редактирование исходного кода Bitcoin Core (строка 31.1)**, либо запуск готового модифицированного клиента с нашего репозитория: 
+                <a href="https://github.com" class="github-link" target="_blank">Открыть GitHub репозиторий ↗</a>
+            </p>
+        </div>
+    </div>
 
+    <!-- ДАННЫЕ ТРАНЗАКЦИИ -->
+    <div class="card">
+        <label for="rawHex">Сырые данные для майнера (Raw TX Hex):</label>
+        <textarea id="rawHex" readonly placeholder="Вставьте сюда ваш шестнадцатеричный HEX-код подписанной транзакции...">01000000012c1b5a...</textarea>
+        
+        <button class="btn-copy" onclick="copyHex()">Скопировать Raw HEX</button>
+    </div>
+
+    <!-- ДЕТАЛИ ВАЛИДНОСТИ -->
+    <div class="card">
+        <h3 style="margin-top: 0; color: #fff;">Технический аудит для администраторов пула:</h3>
+        <ul class="info-list">
+            <li><strong>Консенсус:</strong> Скрипты и структура полностью соответствуют консенсусным правилам Bitcoin Core (законы блокчейна не нарушены).</li>
+            <li><strong>Изоляция:</strong> Данные никогда не транслировались в публичный мемпул во избежание конфликтов нод.</li>
+            <li><strong>Автономность:</strong> Никаких сторонних Escrow или ручных выплат. Сверхвысокая комиссия прописана в поле выходов и выплачивается протоколом Биткоина в Coinbase-транзакцию майнера.</li>
+        </ul>
+    </div>
+
+    <footer>
+        <p>Контакты для оперативной связи и валидации: <a href="https://t.me" target="_blank">Telegram (@your_username)</a> | Email: support@domain.com</p>
+    </footer>
+</div>
+
+<script>
+    function copyHex() {
+        const copyText = document.getElementById("rawHex");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+        navigator.clipboard.writeText(copyText.value);
+        
+        const btn = document.querySelector('.btn-copy');
+        const originalText = btn.innerText;
+        btn.innerText = "Успешно скопировано!";
+        btn.style.backgroundColor = "#00ff66";
+        
+        setTimeout(() => {
+            btn.innerText = originalText;
+            btn.style.backgroundColor = "#f7931a";
+        }, 2000);
+    }
+</script>
+
+</body>
+</html>
