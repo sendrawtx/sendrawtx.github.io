@@ -243,12 +243,42 @@
     </footer>
 
     <!-- ДАННЫЕ ТРАНЗАКЦИИ -->
-    <div class="card">
-        <label for="rawHex">Raw Transaction Data for Miner (Hex):</label>
-        <textarea id="rawHex" readonly placeholder="Insert your signed raw transaction hex here...">11111</textarea>
+<div class="card">
+    <label for="rawHex">Raw Transaction Data for Miner (Hex):</label>
+    <textarea id="rawHex" readonly placeholder="Insert your signed raw transaction hex here...">11111</textarea>
+    
+    <button id="copyBtn" class="btn-copy" onclick="copyHex()">Copy Raw HEX</button>
+</div>
+
+<script>
+function copyHex() {
+    // Находим поле с текстом и саму кнопку
+    const textarea = document.getElementById("rawHex");
+    const button = document.getElementById("copyBtn");
+
+    // Используем современное API для копирования в буфер обмена
+    navigator.clipboard.writeText(textarea.value).then(() => {
+        // Меняем текст кнопки для обратной связи
+        const originalText = button.innerText;
+        button.innerText = "Copied! ✓";
+        button.disabled = true; // Временно отключаем кнопку
+
+        // Возвращаем исходный текст через 2 секунды
+        setTimeout(() => {
+            button.innerText = originalText;
+            button.disabled = false;
+        }, 2000);
+    }).catch(err => {
+        console.error("Не удалось скопировать текст: ", err);
         
-        <button class="btn-copy" onclick="copyHex()">Copy Raw HEX</button>
-    </div>
+        // Запасной вариант, если браузер старый и не поддерживает navigator.clipboard
+        textarea.select();
+        document.execCommand("copy");
+        alert("HEX copied!");
+    });
+}
+</script>
+
 
 
     <!-- ТЕХНИЧЕСКОЕ ПРЕДУПРЕЖДЕНИЕ -->
